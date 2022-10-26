@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 const videoConstraints = {
   width: 240,
   height: 400,
-  facingMode: "user",
+  facingMode: "enviroment",
 };
 const WebCamCapture = () => {
   //navigating path for preview
@@ -57,7 +57,7 @@ const WebCamCapture = () => {
         width={videoConstraints.width}
         mirrored={true}
         ref={webcamRef}
-        videoConstraints={videoConstraints}
+      
       ></Webcam>
       <div className="webcam__btns">
         <div className="btn chat__btn" onClick={chats}>

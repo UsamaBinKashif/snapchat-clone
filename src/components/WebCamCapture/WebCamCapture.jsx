@@ -9,8 +9,8 @@ import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import PeopleIcon from "@mui/icons-material/People";
 import { motion } from "framer-motion";
 const videoConstraints = {
-  width: 250,
-  height: 350,
+  width:  300,
+  height: 520,
   facingMode: "user",
 };
 const WebCamCapture = () => {

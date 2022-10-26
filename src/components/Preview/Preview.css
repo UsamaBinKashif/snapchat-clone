@@ -1,0 +1,46 @@
+.preview {
+  position: relative;
+}
+
+.close__btn {
+  position: absolute;
+  left: 0;
+  margin: 0.625rem;
+}
+
+.preview__toolbarIcons {
+  position: absolute;
+  right: 0;
+  margin: 0.625rem;
+  display: flex;
+  flex-direction: column;
+}
+.preview__toolbarIcons > .MuiSvgIcon-root,
+.close__btn {
+  font-size: 1.1rem !important;
+  margin-bottom: 0.925rem;
+  cursor: pointer;
+  color: white;
+}
+
+.preview__footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  border-radius: 0.825rem;
+  gap: 3px;
+  background-color: #fffc00;
+  color: black;
+  font-size: 8px;
+  font-weight: 700;
+  position: absolute;
+  bottom: 0;
+  right: -10%;
+  cursor: pointer;
+
+  transform: translate(-50%, -50%);
+}
+.preview__footer > .MuiSvgIcon-root {
+  font-size: 8px !important;
+}

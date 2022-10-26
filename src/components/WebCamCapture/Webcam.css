@@ -1,0 +1,31 @@
+.webcam {
+  position: relative;
+}
+.webcam__btn {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.webcam__btns {
+  display: grid;
+  place-items: center;
+  grid-auto-flow: column;
+  position: absolute;
+  gap: 4rem;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.webcam__btns > div {
+  cursor: pointer;
+}
+
+.btn > .MuiSvgIcon-root {
+  font-size: 1rem;
+}
+.chat__btn {
+  color: #3cb2e2;
+}

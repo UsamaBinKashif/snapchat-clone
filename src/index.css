@@ -1,0 +1,20 @@
+*::before,
+*,
+*::after {
+  margin: 0;
+
+}
+
+body {
+  color: white;
+  font-family: "Poppins",sans-serif;
+ 
+}
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #fffc00;
+}

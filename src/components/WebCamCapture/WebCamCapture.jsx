@@ -10,7 +10,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import { motion } from "framer-motion";
 const videoConstraints = {
 
-  width: 250,
+  width: 150,
   height: 400,
 
  

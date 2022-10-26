@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 const videoConstraints = {
 
   width: 50,
-  height: 800,
+  height:50,
 
  
   facingMode: "user",

@@ -10,7 +10,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import { motion } from "framer-motion";
 const videoConstraints = {
   width: 240,
-  height: 400,
+  height: 600,
   facingMode: "enviroment",
 };
 const WebCamCapture = () => {

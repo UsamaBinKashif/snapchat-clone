@@ -69,8 +69,9 @@ const WebCamCapture = () => {
         <div className="btn">
           <PeopleIcon />
         </div>
-</Webcam>
+
       </div>
+</Webcam>
     </motion.div>
   );
 };

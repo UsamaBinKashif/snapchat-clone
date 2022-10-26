@@ -58,7 +58,7 @@ const WebCamCapture = () => {
         mirrored={true}
         ref={webcamRef}
       
-      ></Webcam>
+      >
       <div className="webcam__btns">
         <div className="btn chat__btn" onClick={chats}>
           <ChatBubbleIcon />
@@ -69,6 +69,7 @@ const WebCamCapture = () => {
         <div className="btn">
           <PeopleIcon />
         </div>
+</Webcam>
       </div>
     </motion.div>
   );

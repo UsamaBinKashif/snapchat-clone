@@ -18,22 +18,24 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import {
-  getStorage,
   ref,
   uploadString,
   getDownloadURL,
+  uploadBytesResumable,
 } from "firebase/storage";
-import { doc, setDoc, serverTimestamp } from "firebase/firestore";
-import { DB } from "../../firebase/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db, storage } from "../../firebase/firebase";
 
 const Preview = () => {
   //storage
   const id = uuidv4();
-  const storage = getStorage();
   const storageRef = ref(storage, `posts/${id}`);
-
+  const metaData = {
+    content: "image/png",
+  };
   //getting camera image from redux
   const cameraImage = useSelector(selectCameraImage);
+  const uploadTask = uploadBytesResumable(storageRef, cameraImage, metaData); //uploadString(storageRef, cameraImage, 'data_url');
 
   //redirecting user back to cam if theres not an image.
   const navigate = useNavigate();
@@ -51,26 +53,29 @@ const Preview = () => {
 
   //send post
   const sendPost = () => {
-    uploadString(storageRef, `${cameraImage}`, "data_url")
-      .then(() => {
-        getDownloadURL(ref(storage, `posts/${id}`))
-          .then((url) => {
-            const docData = {
-              imageURL: url,
+    uploadTask.on(
+      "state_changed",
+      null, //progress function
+      (error) => {
+        //Error Function
+        alert(error);
+      },
+      () => {
+        //Complete Function
+        uploadString(storageRef, cameraImage, "data_url").then(() => {
+          getDownloadURL(storageRef).then((url) => {
+            addDoc(collection(db, "posts"), {
+              imageUrl: url,
               username: "USAMA",
+              profilePic: "NO Profile",
               read: false,
               timestamp: serverTimestamp(),
-            };
-            setDoc(doc(DB, "posts", `${id}`), docData);
-          })
-          .catch((error) => {
-            console.log(error.message);
+            });
+            navigate("/chats", { replace: true });
           });
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-    navigate("/chats");
+        });
+      }
+    );
   };
 
   return (
@@ -112,8 +117,23 @@ const Preview = () => {
 };
 
 export default Preview;
+
 // .getDownloadURL(storageRef).then((url) => {
 //
+// })
+// .catch((error) => {
+//   console.log(error.message);
+// });
+
+// storage.getDownloadURL(ref(storage, `posts/${id}`))
+// .then((url) => {
+//   const docData = {
+//     imageURL: url,
+//     username: "USAMA",
+//     read: false,
+//     timestamp: serverTimestamp(),
+//   };
+//   setDoc(doc(db, "posts", `${id}`), docData);
 // })
 // .catch((error) => {
 //   console.log(error.message);

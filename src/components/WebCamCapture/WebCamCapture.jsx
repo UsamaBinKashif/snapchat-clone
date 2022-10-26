@@ -9,7 +9,7 @@ import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import PeopleIcon from "@mui/icons-material/People";
 import { motion } from "framer-motion";
 const videoConstraints = {
-  width: 240,
+  width: 250,
   height: 400,
   facingMode: "user",
 };
@@ -32,9 +32,9 @@ const WebCamCapture = () => {
   }, [webcamRef]);
 
   //chats
-  const chats = ()=>{
-    navigate("/chats")
-  }
+  const chats = () => {
+    navigate("/chats");
+  };
   return (
     <motion.div
       className="webcam"
@@ -52,13 +52,12 @@ const WebCamCapture = () => {
     >
       <Webcam
         audio={false}
-        height={videoConstraints.height}
-        screenshotFormat="image/jpeg"
-        width={videoConstraints.width}
+        screenshotFormat="image/png"
+        videoConstraints={videoConstraints}
         mirrored={true}
         ref={webcamRef}
-        videoConstraints={videoConstraints}
       ></Webcam>
+
       <div className="webcam__btns">
         <div className="btn chat__btn" onClick={chats}>
           <ChatBubbleIcon />

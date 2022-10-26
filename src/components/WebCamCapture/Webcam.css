@@ -1,5 +1,6 @@
 .webcam {
   position: relative;
+  
 }
 .webcam__btn {
   position: absolute;
@@ -17,6 +18,7 @@
   gap: 4rem;
   bottom: 0;
   left: 50%;
+  z-index: 999;
   transform: translate(-50%, -50%);
 }
 .webcam__btns > div {

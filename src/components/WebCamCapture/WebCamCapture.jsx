@@ -50,7 +50,7 @@ const WebCamCapture = () => {
         ? FACING_MODE_ENVIRONMENT
         : FACING_MODE_USER
     );
-  }, [facingMode]);
+  }, []);
 
   return (
     <motion.div
@@ -72,11 +72,10 @@ const WebCamCapture = () => {
         audio={false}
         screenshotFormat="image/png"
         videoConstraints={{
-          ...videoConstraints,
-          facingMode,
+          videoConstraints
         }}
         ref={webcamRef}
-        mirrored={true ? facingMode : false}
+        mirrored={false}
       ></Webcam>
 
       <div className="webcam__btns">

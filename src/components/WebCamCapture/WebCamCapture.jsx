@@ -13,7 +13,7 @@ const FACING_MODE_USER = "user";
 const FACING_MODE_ENVIRONMENT = "environment";
 
 const videoConstraints = {
-  facingMode: FACING_MODE_USER,
+  facingMode: "user",
   width: 300,
   height: 450,
 };

@@ -1,11 +1,10 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { WebCamCapture, Preview, Chats } from "./components";
-import MOCKUP from "./mockup.png";
+
 function App() {
   return (
     <div className="app">
-      <img src={MOCKUP} alt="" />
       <div className="app__body">
         <BrowserRouter>
           <Routes>

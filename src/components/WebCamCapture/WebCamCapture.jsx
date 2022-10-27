@@ -41,7 +41,7 @@ const WebCamCapture = () => {
   const videoConstraints = {
     width: 300,
     height: 450,
-    facingMode: `${btn}`,
+    facingMode:"enviroment",
   };
 
   return (

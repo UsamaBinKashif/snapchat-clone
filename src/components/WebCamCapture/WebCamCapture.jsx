@@ -69,8 +69,8 @@ const WebCamCapture = () => {
     >
       <CameraswitchIcon className="switch__btn" onClick={handleClick} />
       <Webcam
-height:{450}
-width:{300}
+height={450}
+width={300}
         audio={false}
         screenshotFormat="image/png"
         videoConstraints={{

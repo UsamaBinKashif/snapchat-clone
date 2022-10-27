@@ -14,6 +14,11 @@ const FACING_MODE_ENVIRONMENT = "environment";
 
 const videoConstraints = {
   facingMode: FACING_MODE_USER,
+<<<<<<< HEAD
+=======
+   width: 300,
+    height: 400,
+>>>>>>> f5b7d0826efe85926264e1623648f5c14824545d
 };
 
 const WebCamCapture = () => {
@@ -40,6 +45,7 @@ const WebCamCapture = () => {
   };
 
   //change facing mode
+<<<<<<< HEAD
 
   const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
   const handleClick = useCallback(() => {
@@ -47,6 +53,16 @@ const WebCamCapture = () => {
       prevState === FACING_MODE_USER
         ? FACING_MODE_ENVIRONMENT
         : FACING_MODE_USER
+=======
+  
+const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
+  const handleClick = useCallback(() => {
+    setFacingMode(
+      prevState =>
+        prevState === FACING_MODE_USER
+          ? FACING_MODE_ENVIRONMENT
+          : FACING_MODE_USER
+>>>>>>> f5b7d0826efe85926264e1623648f5c14824545d
     );
   }, []);
 
@@ -65,6 +81,7 @@ const WebCamCapture = () => {
         x: 0,
       }}
     >
+<<<<<<< HEAD
       <CameraswitchIcon className="switch__btn" onClick={handleClick} />
       <Webcam
         audio={false}
@@ -74,6 +91,18 @@ const WebCamCapture = () => {
           facingMode,
         }}
         mirrored={true ? facingMode : false}
+=======
+      <CameraswitchIcon className="switch__btn" onClick={handleClick}/>
+      <Webcam
+        audio={false}
+        screenshotFormat="image/png"
+      videoConstraints={{
+          ...videoConstraints,
+          facingMode
+        }}
+        
+        mirrored={true?FACING_MODE_USER:false}
+>>>>>>> f5b7d0826efe85926264e1623648f5c14824545d
         ref={webcamRef}
       ></Webcam>
 

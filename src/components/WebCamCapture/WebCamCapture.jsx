@@ -14,8 +14,8 @@ const FACING_MODE_ENVIRONMENT = "environment";
 
 const videoConstraints = {
   facingMode: FACING_MODE_USER,
-   width: 300,
-    height: 450,
+   width: 250,
+    height: 400,
 };
 
 const WebCamCapture = () => {
@@ -76,6 +76,8 @@ const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
           ...videoConstraints,
           facingMode
         }}
+        height={videoConstraints.height}
+        width={videoConstraints.width}
         mirrored={true}
         ref={webcamRef}
       ></Webcam>

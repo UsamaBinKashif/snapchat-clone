@@ -1,21 +1,15 @@
 import Webcam from "react-webcam";
 import "./Webcam.css";
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { setCameraImage } from "../../features/camera/cameraslice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import PeopleIcon from "@mui/icons-material/People";
+import CameraswitchIcon from "@mui/icons-material/Cameraswitch";
 import { motion } from "framer-motion";
-const videoConstraints = {
 
-  width: 250,
-  height:400,
-
- 
-  facingMode: "user",
-};
 const WebCamCapture = () => {
   //navigating path for preview
   const navigate = useNavigate();
@@ -38,6 +32,18 @@ const WebCamCapture = () => {
   const chats = () => {
     navigate("/chats");
   };
+
+  //change facing mode
+  const [btn, setBtn] = useState("user");
+  const switchCam = () => {
+    setBtn("enviroment");
+  };
+  const videoConstraints = {
+    width: 300,
+    height: 450,
+    facingMode: `${btn}`,
+  };
+
   return (
     <motion.div
       className="webcam"
@@ -53,12 +59,13 @@ const WebCamCapture = () => {
         x: 0,
       }}
     >
+      <CameraswitchIcon className="switch__btn" onClick={switchCam}/>
       <Webcam
         audio={false}
         screenshotFormat="image/png"
         videoConstraints={videoConstraints}
         mirrored={true}
-        ref={webcamRef} 
+        ref={webcamRef}
       ></Webcam>
 
       <div className="webcam__btns">
@@ -71,9 +78,7 @@ const WebCamCapture = () => {
         <div className="btn">
           <PeopleIcon />
         </div>
-
       </div>
-
     </motion.div>
   );
 };

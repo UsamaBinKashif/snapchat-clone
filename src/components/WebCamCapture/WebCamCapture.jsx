@@ -14,7 +14,8 @@ const FACING_MODE_ENVIRONMENT = "environment";
 
 const videoConstraints = {
   facingMode: FACING_MODE_USER,
-
+  width: 300,
+  height: 450,
 };
 
 const WebCamCapture = () => {
@@ -42,16 +43,14 @@ const WebCamCapture = () => {
 
   //change facing mode
 
-const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
+  const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
   const handleClick = useCallback(() => {
-    setFacingMode(
-      prevState =>
-        prevState === FACING_MODE_USER
-          ? FACING_MODE_ENVIRONMENT
-          : FACING_MODE_USER
-
+    setFacingMode((prevState) =>
+      prevState === FACING_MODE_USER
+        ? FACING_MODE_ENVIRONMENT
+        : FACING_MODE_USER
     );
-  }, []);
+  }, [facingMode]);
 
   return (
     <motion.div
@@ -68,7 +67,6 @@ const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
         x: 0,
       }}
     >
-
       <CameraswitchIcon className="switch__btn" onClick={handleClick} />
       <Webcam
         audio={false}
@@ -77,10 +75,9 @@ const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
           ...videoConstraints,
           facingMode,
         }}
-        mirrored={true ? facingMode : false}>
-
-   
-      </Webcam>
+        ref={webcamRef}
+        mirrored={true ? facingMode : false}
+      ></Webcam>
 
       <div className="webcam__btns">
         <div className="btn chat__btn" onClick={chats}>

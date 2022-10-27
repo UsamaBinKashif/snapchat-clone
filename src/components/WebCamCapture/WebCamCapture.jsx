@@ -11,11 +11,13 @@ import CameraswitchIcon from "@mui/icons-material/Cameraswitch";
 import { motion } from "framer-motion";
 const FACING_MODE_USER = "user";
 const FACING_MODE_ENVIRONMENT = "environment";
+const MIRROR_TRUE = true;
+const MIRROR_FALSE = false;
 
 const videoConstraints = {
   facingMode: FACING_MODE_USER,
-  width: 300,
-  height: 450,
+  width: 350,
+  height: 500,
 };
 
 const WebCamCapture = () => {
@@ -44,6 +46,7 @@ const WebCamCapture = () => {
   //change facing mode
 
   const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
+
   const handleClick = useCallback(() => {
     setFacingMode((prevState) =>
       prevState === FACING_MODE_USER
@@ -69,16 +72,16 @@ const WebCamCapture = () => {
     >
       <CameraswitchIcon className="switch__btn" onClick={handleClick} />
       <Webcam
-height={450}
-width={300}
         audio={false}
+        height={videoConstraints.height}
+        width={videoConstraints.width}
         screenshotFormat="image/png"
         videoConstraints={{
           ...videoConstraints,
-          facingMode
+          facingMode,
         }}
         ref={webcamRef}
-        mirrored={false}
+        mirrored={MIRROR_TRUE ? facingMode === FACING_MODE_USER : MIRROR_FALSE}
       ></Webcam>
 
       <div className="webcam__btns">

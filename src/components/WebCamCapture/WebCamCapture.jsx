@@ -72,7 +72,10 @@ const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
       <Webcam
         audio={false}
         screenshotFormat="image/png"
-        videoConstraints={videoConstraints}
+      videoConstraints={{
+          ...videoConstraints,
+          facingMode
+        }}
         mirrored={true}
         ref={webcamRef}
       ></Webcam>

@@ -9,6 +9,14 @@ import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import PeopleIcon from "@mui/icons-material/People";
 import CameraswitchIcon from "@mui/icons-material/Cameraswitch";
 import { motion } from "framer-motion";
+const FACING_MODE_USER = "user";
+const FACING_MODE_ENVIRONMENT = "environment";
+
+const videoConstraints = {
+  facingMode: FACING_MODE_USER,
+   width: 300,
+    height: 450,
+};
 
 const WebCamCapture = () => {
   //navigating path for preview
@@ -34,15 +42,16 @@ const WebCamCapture = () => {
   };
 
   //change facing mode
-  const [btn, setBtn] = useState("user");
-  const switchCam = () => {
-    setBtn("enviroment");
-  };
-  const videoConstraints = {
-    width: 300,
-    height: 450,
-    facingMode:"enviroment",
-  };
+  
+const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
+  const handleClick = useCallback(() => {
+    setFacingMode(
+      prevState =>
+        prevState === FACING_MODE_USER
+          ? FACING_MODE_ENVIRONMENT
+          : FACING_MODE_USER
+    );
+  }, []);
 
   return (
     <motion.div
@@ -59,7 +68,7 @@ const WebCamCapture = () => {
         x: 0,
       }}
     >
-      <CameraswitchIcon className="switch__btn" onClick={switchCam}/>
+      <CameraswitchIcon className="switch__btn" onClick={handleClick}/>
       <Webcam
         audio={false}
         screenshotFormat="image/png"

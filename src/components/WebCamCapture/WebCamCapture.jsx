@@ -11,10 +11,13 @@ import CameraswitchIcon from "@mui/icons-material/Cameraswitch";
 import { motion } from "framer-motion";
 const FACING_MODE_USER = "user";
 const FACING_MODE_ENVIRONMENT = "environment";
+const MIRROR_TRUE = true;
+const MIRROR_FALSE = false;
 
 const videoConstraints = {
   facingMode: FACING_MODE_USER,
-
+  width: 300,
+  height: 500,
 };
 
 const WebCamCapture = () => {
@@ -42,14 +45,13 @@ const WebCamCapture = () => {
 
   //change facing mode
 
-const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
-  const handleClick = useCallback(() => {
-    setFacingMode(
-      prevState =>
-        prevState === FACING_MODE_USER
-          ? FACING_MODE_ENVIRONMENT
-          : FACING_MODE_USER
+  const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
 
+  const handleClick = useCallback(() => {
+    setFacingMode((prevState) =>
+      prevState === FACING_MODE_USER
+        ? FACING_MODE_ENVIRONMENT
+        : FACING_MODE_USER
     );
   }, []);
 
@@ -58,29 +60,31 @@ const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
       className="webcam"
       initial={{
         opacity: 0,
-        x: -200,
       }}
       transition={{
         duration: 0.5,
       }}
       whileInView={{
         opacity: 1,
-        x: 0,
       }}
     >
-
       <CameraswitchIcon className="switch__btn" onClick={handleClick} />
       <Webcam
         audio={false}
+        height={videoConstraints.height}
+        width={videoConstraints.width}
         screenshotFormat="image/png"
         videoConstraints={{
           ...videoConstraints,
           facingMode,
         }}
-        mirrored={true ? facingMode : false}>
-
-   
-      </Webcam>
+        ref={webcamRef}
+        mirrored={MIRROR_TRUE ? facingMode === FACING_MODE_USER : MIRROR_FALSE}
+        style={{
+          height: "100%",
+          width: "310px",
+        }}
+      ></Webcam>
 
       <div className="webcam__btns">
         <div className="btn chat__btn" onClick={chats}>

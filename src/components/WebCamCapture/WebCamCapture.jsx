@@ -16,8 +16,8 @@ const MIRROR_FALSE = false;
 
 const videoConstraints = {
   facingMode: FACING_MODE_USER,
-  width: 350,
-  height: 500,
+  width: 300,
+  height: 700,
 };
 
 const WebCamCapture = () => {
@@ -60,14 +60,14 @@ const WebCamCapture = () => {
       className="webcam"
       initial={{
         opacity: 0,
-        x: -200,
+       
       }}
       transition={{
         duration: 0.5,
       }}
       whileInView={{
         opacity: 1,
-        x: 0,
+        
       }}
     >
       <CameraswitchIcon className="switch__btn" onClick={handleClick} />

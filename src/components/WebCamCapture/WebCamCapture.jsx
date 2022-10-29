@@ -76,6 +76,7 @@ const WebCamCapture = () => {
           ...videoConstraints,
           facingMode,
         }}
+
         ref={webcamRef}
         mirrored={MIRROR_TRUE ? facingMode === FACING_MODE_USER : MIRROR_FALSE}
         className="webcam__cam"

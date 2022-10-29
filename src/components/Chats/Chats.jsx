@@ -4,6 +4,11 @@ import { Avatar } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import { useNavigate } from "react-router-dom";
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
+import { useEffect, useState } from "react";
+import Chat from "./Chat/Chat";
+
 const Chats = () => {
   //navigating path for preview
   const navigate = useNavigate();
@@ -11,9 +16,26 @@ const Chats = () => {
     navigate("/");
   };
 
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    onSnapshot(
+      query(collection(db, "posts"), orderBy("timestamp", "desc")),
+      (snapshot) =>
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+    );
+  }, []);
+
+  console.log(posts);
+
   return (
     <motion.div
-      className="chat"
+      className="chats"
       initial={{
         opacity: 0,
       }}
@@ -24,22 +46,31 @@ const Chats = () => {
         opacity: 1,
       }}
     >
-      <div className="chat__header">
-        <Avatar className="chat__header--avatar" />
-        <div className="chat__header--search">
+      <div className="chats__header">
+        <Avatar className="chats__header--avatar" />
+        <div className="chats__header--search">
           <SearchIcon fontSize="small" />
           <input type="text" placeholder="Search" />
         </div>
         <CameraAltIcon
-          className="chat__header--icon"
+          className="chats__header--icon"
           fontSize="small"
           onClick={camera}
         />
       </div>
-      <div className="chat__posts">
-        
+      <div className="chats__posts">
+      {posts.map(({id, data: {profilePic, username, timestamp, imageUrl, read}}) => (
+                <Chat
+                    key={id}
+                    id={id}
+                    username={username}
+                    timestamp={timestamp}
+                    imageUrl={imageUrl}
+                    read={read}
+                    profilePic={profilePic}
+                />
+            ))}
       </div>
-
     </motion.div>
   );
 };

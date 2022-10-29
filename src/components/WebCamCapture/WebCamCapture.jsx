@@ -16,8 +16,8 @@ const MIRROR_FALSE = false;
 
 const videoConstraints = {
   facingMode: FACING_MODE_USER,
-  width: 300,
-  height: 700,
+  width: 350,
+  height: 300,
 };
 
 const WebCamCapture = () => {

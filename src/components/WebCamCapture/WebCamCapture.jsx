@@ -15,9 +15,7 @@ const MIRROR_TRUE = true;
 const MIRROR_FALSE = false;
 
 const videoConstraints = {
-  facingMode: FACING_MODE_USER,
-  width: 300,
-  height: 500,
+  facingMode: FACING_MODE_USER
 };
 
 const WebCamCapture = () => {
@@ -60,19 +58,15 @@ const WebCamCapture = () => {
       className="webcam"
       initial={{
         opacity: 0,
+
       }}
       transition={{
         duration: 0.5,
       }}
       whileInView={{
         opacity: 1,
-      }}
-    >
-      <CameraswitchIcon className="switch__btn" onClick={handleClick} />
-      <Webcam
-        audio={false}
-        height={videoConstraints.height}
-        width={videoConstraints.width}
+
+
         screenshotFormat="image/png"
         videoConstraints={{
           ...videoConstraints,
@@ -80,10 +74,11 @@ const WebCamCapture = () => {
         }}
         ref={webcamRef}
         mirrored={MIRROR_TRUE ? facingMode === FACING_MODE_USER : MIRROR_FALSE}
+
         style={{
           height: "100%",
-          width: "310px",
-        }}
+          width: "310px"}}
+
       ></Webcam>
 
       <div className="webcam__btns">

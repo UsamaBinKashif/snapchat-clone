@@ -82,8 +82,8 @@ const WebCamCapture = () => {
         mirrored={MIRROR_TRUE ? facingMode === FACING_MODE_USER : MIRROR_FALSE}
 style={{
           height: "100%",
-          width: "100%",
-          objectFit: "fill",
+          width: "300px",
+          
         }}
       ></Webcam>
 

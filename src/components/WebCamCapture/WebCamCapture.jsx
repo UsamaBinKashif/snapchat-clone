@@ -9,14 +9,14 @@ import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import PeopleIcon from "@mui/icons-material/People";
 import CameraswitchIcon from "@mui/icons-material/Cameraswitch";
 import { motion } from "framer-motion";
+
+//camera constraints
 const FACING_MODE_USER = "user";
 const FACING_MODE_ENVIRONMENT = "environment";
 const MIRROR_TRUE = true;
 const MIRROR_FALSE = false;
-
 const videoConstraints = {
   facingMode: FACING_MODE_USER,
- 
 };
 
 const WebCamCapture = () => {
@@ -59,7 +59,6 @@ const WebCamCapture = () => {
       className="webcam"
       initial={{
         opacity: 0,
-
       }}
       transition={{
         duration: 0.5,
@@ -69,11 +68,9 @@ const WebCamCapture = () => {
       }}
     >
       <CameraswitchIcon className="switch__btn" onClick={handleClick} />
+
       <Webcam
         audio={false}
-        height={videoConstraints.height}
-        width={videoConstraints.width}
-      
         screenshotFormat="image/png"
         videoConstraints={{
           ...videoConstraints,
@@ -81,11 +78,7 @@ const WebCamCapture = () => {
         }}
         ref={webcamRef}
         mirrored={MIRROR_TRUE ? facingMode === FACING_MODE_USER : MIRROR_FALSE}
-style={{
-          height: "100%",
-          width: "310px",
-          
-        }}
+        className="webcam__cam"
       ></Webcam>
 
       <div className="webcam__btns">

@@ -2,6 +2,11 @@
   position: relative;
   
 }
+.webcam__cam{
+  width: 19.375rem;
+  height: 100%;
+  
+}
 
 .switch__btn{
   position: absolute;

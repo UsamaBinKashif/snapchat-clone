@@ -36,6 +36,10 @@ const Chats = () => {
           onClick={camera}
         />
       </div>
+      <div className="chat__posts">
+        
+      </div>
+
     </motion.div>
   );
 };

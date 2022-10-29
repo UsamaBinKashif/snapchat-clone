@@ -16,7 +16,7 @@ const MIRROR_FALSE = false;
 
 const videoConstraints = {
   facingMode: FACING_MODE_USER,
-  width: 350,
+  width: 450,
   height: 300,
 };
 

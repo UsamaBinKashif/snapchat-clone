@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { WebCamCapture, Preview, Chats } from "./components";
+import { WebCamCapture, Preview, Chats,ChatView } from "./components";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
             <Route exact path="/" element={<WebCamCapture />} />
             <Route path="/preview" element={<Preview />} />
             <Route path="/chats" element={<Chats />} />
+            <Route path="/chats/chatview" element={<ChatView />} />
           </Routes>
         </BrowserRouter>
       </div>

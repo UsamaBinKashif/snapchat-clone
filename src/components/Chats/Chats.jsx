@@ -31,7 +31,7 @@ const Chats = () => {
     );
   }, []);
 
-  console.log(posts);
+ 
 
   return (
     <motion.div
@@ -49,7 +49,7 @@ const Chats = () => {
       <div className="chats__header">
         <Avatar className="chats__header--avatar" />
         <div className="chats__header--search">
-          <SearchIcon fontSize="small" />
+          <SearchIcon fontSize="small" className="icon" />
           <input type="text" placeholder="Search" />
         </div>
         <CameraAltIcon

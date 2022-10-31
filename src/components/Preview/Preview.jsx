@@ -71,11 +71,12 @@ const Preview = () => {
               read: false,
               timestamp: serverTimestamp(),
             });
-            navigate("/chats", { replace: true });
           });
+          navigate("/chats", { replace: true });
         });
+        
       }
-    );
+      );
   };
 
   return (
@@ -118,23 +119,3 @@ const Preview = () => {
 
 export default Preview;
 
-// .getDownloadURL(storageRef).then((url) => {
-//
-// })
-// .catch((error) => {
-//   console.log(error.message);
-// });
-
-// storage.getDownloadURL(ref(storage, `posts/${id}`))
-// .then((url) => {
-//   const docData = {
-//     imageURL: url,
-//     username: "USAMA",
-//     read: false,
-//     timestamp: serverTimestamp(),
-//   };
-//   setDoc(doc(db, "posts", `${id}`), docData);
-// })
-// .catch((error) => {
-//   console.log(error.message);
-// });

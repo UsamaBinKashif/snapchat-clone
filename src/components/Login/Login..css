@@ -1,0 +1,19 @@
+.login {
+  display: grid;
+  place-items: center;
+}
+.login > img {
+  width: 50%;
+}
+.login__btn {
+  padding: 0.625rem 1.2rem;
+  text-transform: uppercase;
+  font-weight: bolder;
+  border-radius: 1rem;
+  border: none;
+  background-color: white;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.57);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.57);
+  cursor: pointer;
+}

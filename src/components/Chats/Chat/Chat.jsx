@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { selectImage } from "../../../features/app/appslice";
 import { useNavigate } from "react-router-dom";
-import { updateDoc,doc } from "firebase/firestore";
+import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../../../firebase/firebase";
 const Chat = ({ id, username, timestamp, read, imageUrl, profilePic }) => {
   //open image
@@ -16,15 +16,15 @@ const Chat = ({ id, username, timestamp, read, imageUrl, profilePic }) => {
   const open = () => {
     if (!read) {
       dispatch(selectImage(imageUrl));
-      updateDoc(doc(db,'posts',id),{
-        read: true
-    })
-    navigate('/chats/chatview')
+      updateDoc(doc(db, "posts", id), {
+        read: true,
+      });
+      navigate("/chats/chatview");
     }
   };
   return (
     <motion.div
-    onClick={open}
+      onClick={open}
       className="chat"
       initial={{
         x: -200,
@@ -40,11 +40,11 @@ const Chat = ({ id, username, timestamp, read, imageUrl, profilePic }) => {
       <div className="chat__info">
         <h4>{username}</h4>
         <p>
-        {!read ? 'Tap to view -' : "Opened" }{" "}
+          {!read ? "Tap to view -" : "Opened"}{" "}
           <TimeAgo date={new Date(timestamp?.toDate()).toUTCString()} />
         </p>
       </div>
-      <StopRounded className="chat__readIcon" />
+      {!read ? <StopRounded className="read__icon-red" /> : <StopRounded className="read__icon-gray" />}
     </motion.div>
   );
 };
